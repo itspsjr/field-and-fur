@@ -586,4 +586,4 @@ function LegacyProofModal({ service, onClose }) {
   );
 }
 
-Object.assign(window, { LegacyServicesPage, LEGACY_SERVICES, legacyServiceToCartItem, legacyServiceToCartItemWithPersonalization, LEGACY_PERSONALIZATION });
+Object.assign(window, { LegacyServicesPage, LEGACY_SERVICES, LegacyBookScene, legacyServiceToCartItem, legacyServiceToCartItemWithPersonalization, LEGACY_PERSONALIZATION });
