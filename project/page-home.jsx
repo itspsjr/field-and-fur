@@ -7,23 +7,20 @@ function HomePage() {
       {/* HERO */}
       <Hero layout={heroLayout} />
 
-      {/* TRUST STRIP */}
-      <TrustStrip />
-
-      {/* DOG CARE SYSTEM */}
+      {/* LEGACY SERVICES */}
       <section className="section" style={{ background: '#fff' }}>
         <div className="wrap">
           <SectionHeader
-            eyebrow="PawApothecary collections"
-            title="Dog grooming and dog memorials. Different needs, same standard."
-            lede="PawApothecary is focused on dogs: everyday grooming with wipes and dental water, plus Legacy Studio memorial services when a dog’s life needs to be honored."
+            eyebrow="Dog Legacy Studio"
+            title="Preserve your dog’s story the way it deserves."
+            lede="Every keepsake is made to order, personalized with your dog’s name, photos, and memories. Nothing generic. Nothing off a shelf."
             align="center"
           />
           <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
-              ['01', 'Dog Grooming Wipes', 'Clean paws, coat, face, and post-walk mess before irritation starts.', 'Shop wipes', 'product'],
-              ['02', 'Dental Water Additive', 'A simple daily bowl additive for fresher breath support between brushing.', 'Shop dental care', 'shop'],
-              ['03', 'Dog Legacy Studio', 'A separate memorial service for families ready to preserve a dog’s story after loss.', 'Explore keepsakes', 'legacy'],
+              ['01', 'Dog Memorial Book', 'A printed, hardbound photo book built from your dog’s best moments. Edited and designed for you.', 'Personalize a book', 'legacy'],
+              ['02', 'Tribute Wall Art', 'Museum-quality canvas or fine art print featuring a portrait and tribute text, framed or unframed.', 'Explore art options', 'legacy'],
+              ['03', 'A Letter From Your Dog', 'A beautifully written letter, as if from your dog to you — personalized with names, routines, and memories.', 'Create a letter', 'legacy'],
             ].map(([n, title, text, cta, route]) => (
               <article key={title} className="card" style={{ padding: 26 }}>
                 <span className="pill gold">{n}</span>
@@ -36,101 +33,22 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CARE SYSTEM */}
+      {/* LEGACY FEATURE */}
       <section className="section" style={{ background: 'var(--bg)' }}>
         <div className="wrap grid-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
           <LegacyBookScene service={LEGACY_SERVICES[0]} compact />
           <div>
-            <div className="eyebrow" style={{ marginBottom: 14 }}>Separate collections</div>
+            <div className="eyebrow" style={{ marginBottom: 14 }}>Made to order</div>
             <h2 className="h-display" style={{ fontSize: 'clamp(32px, 4.5vw, 56px)', margin: 0 }}>
-              Daily dog grooming. Dog memorials when the time comes.
+              A keepsake as individual as the dog you’re honoring.
             </h2>
             <p className="lede" style={{ marginTop: 18 }}>
-              PawApothecary does not treat memorial work like an everyday refill. Dog wipes and dental water live in daily grooming; Legacy Studio stays separate for remembrance.
+              Every memorial book, print, and letter is personalized from scratch. You share the photos, the names, the memories — we build something worth keeping for decades.
             </p>
             <div className="row" style={{ marginTop: 28, gap: 14, flexWrap: 'wrap' }}>
-              <button className="btn btn-primary btn-lg" onClick={() => navigate('shop')}>Shop dog care</button>
-              <button className="btn btn-outline btn-lg" onClick={() => navigate('legacy')}>Explore Legacy Studio</button>
+              <button className="btn btn-primary btn-lg" onClick={() => navigate('legacy')}>Explore all keepsakes</button>
+              <button className="btn btn-outline btn-lg" onClick={() => navigate('contact')}>Ask a question</button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED PRODUCT */}
-      <section className="section">
-        <div className="wrap">
-          <div className="grid-split" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 56, alignItems: 'center' }}>
-            <div className="card-sage" style={{ borderRadius: 'var(--radius)', padding: 32, position: 'relative' }}>
-              <span className="pill" style={{ position: 'absolute', top: 24, left: 24, background: 'var(--gold)', color: '#1f1605' }}>★ Bestseller</span>
-              <Placeholder label="hero wipes canister · 80 ct" tone="sage" aspect="4 / 5" style={{ background: 'transparent', border: 0 }} />
-            </div>
-            <div>
-              <div className="eyebrow" style={{ marginBottom: 14 }}>Hero Product · 80-count canister</div>
-              <h2 className="h-display" style={{ fontSize: 'clamp(32px, 4.5vw, 56px)', margin: 0 }}>
-                Start with the everyday dog-care routine.
-              </h2>
-              <p className="lede" style={{ marginTop: 18 }}>
-                Thick, gentle wipes handle the daily mess. Dental water additive supports breath and plaque between brushing. Legacy Studio stays separate for remembrance when a dog’s story needs to be preserved.
-              </p>
-              <div className="row" style={{ marginTop: 28, gap: 14, flexWrap: 'wrap' }}>
-                <button className="btn btn-primary btn-lg" onClick={() => navigate('product')}>Shop wipes — $12</button>
-                <button className="btn btn-outline btn-lg" onClick={() => navigate('subscribe')}>Subscribe &amp; save 15%</button>
-              </div>
-              <div className="row" style={{ marginTop: 24, gap: 18 }}>
-                <Stars value={4.9} showNumber count={2412} />
-                <span className="small">· Free shipping over $35</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY NATURAL */}
-      <section className="section" style={{ background: 'var(--bg-cream)' }}>
-        <div className="wrap grid-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: 56, alignItems: 'center' }}>
-          <div>
-            <div className="eyebrow" style={{ marginBottom: 12 }}>Why natural</div>
-            <h2 className="h-display" style={{ fontSize: 'clamp(28px, 4vw, 44px)', margin: 0 }}>
-              Skin is skin. <span className="h-italic">Even theirs.</span>
-            </h2>
-            <p className="lede" style={{ marginTop: 16 }}>
-              A dog's skin pH is more alkaline than ours, and their nose is closer to everything. We formulate every wipe like we're going to use it on our own family — because we are.
-            </p>
-            <div style={{ marginTop: 28, display: 'grid', gap: 14 }}>
-              {[
-                ['Coconut-derived cleansers', 'instead of sulfates'],
-                ['Oat &amp; chamomile', 'to calm reactive skin'],
-                ['Aloe &amp; vitamin E', 'for coat shine'],
-                ['Biodegradable cloth', 'composts in 90 days'],
-              ].map(([k, v]) => (
-                <div key={k} className="row" style={{ gap: 12 }}>
-                  <CheckLeaf />
-                  <span><strong dangerouslySetInnerHTML={{ __html: k }} /> <span className="muted">— {v}</span></span>
-                </div>
-              ))}
-            </div>
-            <button className="btn btn-outline" style={{ marginTop: 28 }} onClick={() => navigate('about')}>Read our ingredient promise →</button>
-          </div>
-          <div className="grid-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
-            <Placeholder label="ingredient close-up" tone="sage" aspect="3 / 4" />
-            <Placeholder label="dog portrait · golden retriever" tone="gold" aspect="3 / 4" style={{ marginTop: 32 }} />
-          </div>
-        </div>
-      </section>
-
-      {/* BESTSELLERS */}
-      <section className="section">
-        <div className="wrap">
-          <SectionHeader
-            eyebrow="The line"
-            title="Shop by collection"
-            lede="Choose everyday dog grooming or Legacy Studio based on what you need today. They share the PawApothecary standard, but they do not have to be bought together."
-            action={<button className="btn btn-ghost" onClick={() => navigate('shop')}>Shop all →</button>}
-          />
-          <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-            {PRODUCTS.map(p => (
-              <ProductCard key={p.id} product={p} onClick={() => navigate('product', { id: p.id })} />
-            ))}
           </div>
         </div>
       </section>
@@ -139,15 +57,15 @@ function HomePage() {
       <section className="section" style={{ background: 'var(--bg-sage)' }}>
         <div className="wrap">
           <SectionHeader
-            eyebrow="2,400+ happy dog owners"
-            title="What the pack is saying"
+            eyebrow="Families who trusted us"
+            title="What families are saying"
             align="center"
           />
           <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
-              { name: 'Hana K.', dog: 'Suki · Shiba Inu', text: 'My girl has terrible allergies and these wipes are the only thing that doesn\u2019t make her skin flare up. We use them every day after walks.', rating: 5 },
-              { name: 'Marcus T.', dog: 'Olive · Mini Aussie', text: 'I was skeptical of \u201cnatural\u201d wipes \u2014 they\u2019re usually flimsy. These are genuinely thick and don\u2019t fall apart on muddy paws.', rating: 5 },
-              { name: 'Priya R.', dog: 'Mochi · Frenchie', text: 'Vet recommended a gentler product for Mochi\u2019s wrinkles. The Eye & Ear ones cleared up her tear stains within a week.', rating: 5 },
+              { name: 'Hana K.', dog: 'In memory of Suki · Shiba Inu', text: 'The memorial book arrived and I couldn’t stop crying. Every photo was perfectly placed. It felt like someone who actually knew her made it.', rating: 5 },
+              { name: 'Marcus T.', dog: 'In memory of Olive · Mini Aussie', text: 'I ordered the tribute print for my partner after we lost Olive. He hung it the same day it arrived. Nothing from a generic pet site would have come close.', rating: 5 },
+              { name: 'Priya R.', dog: 'In memory of Mochi · Frenchie', text: '“A Letter From Your Dog” was the most thoughtful gift I have ever received. My sister read it at the kitchen table and we both sobbed. It was exactly right.', rating: 5 },
             ].map(r => (
               <blockquote key={r.name} className="card" style={{ margin: 0, padding: 26, background: '#fff' }}>
                 <Stars value={r.rating} />
@@ -173,7 +91,7 @@ function HomePage() {
           <SectionHeader
             eyebrow="The Field Journal"
             title="From the journal"
-            lede="Honest writing on dog grooming, dog care, ingredients, and what we're learning from groomers and vets."
+            lede="Thoughtful writing on honoring dogs, preserving memories, and finding comfort after loss."
             action={<button className="btn btn-ghost" onClick={() => navigate('blog')}>All posts →</button>}
           />
           <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
@@ -188,14 +106,14 @@ function HomePage() {
       <section className="section-tight">
         <div className="wrap">
           <SectionHeader
-            eyebrow="@fieldandfur"
-            title="From the field"
+            eyebrow="@pawapothecary"
+            title="Stories we’ve been trusted with"
             action={<a className="btn btn-ghost">Follow on Instagram →</a>}
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 12 }}>
             {[
-              'golden mid-shake', 'paws in moss', 'puppy nap', 'wipe close-up',
-              'border collie zoom', 'product flat-lay'
+              'dog portrait · golden', 'memorial book open', 'tribute print framed', 'letter close-up',
+              'dog in field', 'keepsake flat-lay'
             ].map((l, i) => (
               <Placeholder key={i} label={l} tone={['sage', 'cream', 'gold', 'sage', 'cream', 'sage'][i]} aspect="1 / 1" />
             ))}
@@ -206,12 +124,12 @@ function HomePage() {
       {/* EMAIL SIGNUP */}
       <section className="section" style={{ background: 'var(--forest)', color: '#fff' }}>
         <div className="wrap center" style={{ maxWidth: 720, margin: '0 auto' }}>
-          <div className="eyebrow" style={{ color: 'rgba(255,255,255,.6)' }}>Join the pack</div>
+          <div className="eyebrow" style={{ color: 'rgba(255,255,255,.6)' }}>Stay in touch</div>
           <h2 className="h-display" style={{ fontSize: 'clamp(32px, 5vw, 52px)', margin: '14px 0' }}>
-            Get 10% off your <span className="h-italic">first order.</span>
+            Stories of dogs <span className="h-italic">remembered.</span>
           </h2>
           <p className="lede" style={{ color: 'rgba(255,255,255,.78)', margin: '0 auto 28px' }}>
-            Plus dog-grooming tips, dog-care drops, and the occasional dog photo. No spam, ever.
+            Studio updates, new keepsake releases, and stories from families we’ve worked with. Never spam.
           </p>
           <EmailCapture variant="dark" />
         </div>
@@ -227,22 +145,22 @@ function Hero({ layout = 'split' }) {
     return (
       <section style={{ background: 'var(--bg-cream)', padding: '96px 0 80px', position: 'relative', overflow: 'hidden' }}>
         <div className="wrap center" style={{ maxWidth: 880, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <span className="pill cream">New formula · 2026</span>
+          <span className="pill cream">Dog Legacy Studio</span>
           <h1 className="h-display" style={{ fontSize: 'clamp(44px, 8vw, 96px)', margin: '24px 0' }}>
-            Clean ingredients.<br />
-            <span className="h-italic">Happy dogs.</span>
+            For the dog whose<br />
+            <span className="h-italic">story continues.</span>
           </h1>
           <p className="lede" style={{ fontSize: 20, margin: '0 auto 32px', maxWidth: 580 }}>
-            Natural grooming wipes crafted for dogs who deserve clean ingredients and gentle care.
+            Memorial books, tribute art, and personalized letters for families honoring a dog’s life after loss.
           </p>
           <div className="row" style={{ justifyContent: 'center', gap: 14, flexWrap: 'wrap' }}>
-            <button className="btn btn-primary btn-lg" onClick={() => navigate('shop')}>Shop wipes</button>
-            <button className="btn btn-gold btn-lg" onClick={() => navigate('subscribe')}>Subscribe &amp; save 15%</button>
+            <button className="btn btn-primary btn-lg" onClick={() => navigate('legacy')}>Explore Legacy Studio</button>
+            <button className="btn btn-gold btn-lg" onClick={() => navigate('contact')}>Ask a question</button>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginTop: 64 }}>
-            <Placeholder label="dog 01 · field run" tone="sage" aspect="4 / 5" />
-            <Placeholder label="product hero · 80ct" tone="gold" aspect="4 / 5" />
-            <Placeholder label="dog 02 · paw close-up" tone="sage" aspect="4 / 5" />
+            <Placeholder label="dog portrait · golden" tone="sage" aspect="4 / 5" />
+            <Placeholder label="memorial book open" tone="gold" aspect="4 / 5" />
+            <Placeholder label="tribute print framed" tone="sage" aspect="4 / 5" />
           </div>
         </div>
       </section>
@@ -256,21 +174,21 @@ function Hero({ layout = 'split' }) {
           <div className="grid-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'stretch' }}>
             <div className="ph forest" style={{ aspectRatio: '4/5', display: 'flex', alignItems: 'flex-end', padding: 36, color: '#fff' }}>
               <div>
-                <div className="eyebrow" style={{ color: 'rgba(255,255,255,.7)' }}>Volume 01 · Field Notes</div>
-                <span className="ph-label">happy dog · golden hour</span>
+                <div className="eyebrow" style={{ color: 'rgba(255,255,255,.7)' }}>Dog Legacy Studio</div>
+                <span className="ph-label">dog portrait · golden hour</span>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '12px 0' }}>
               <div className="eyebrow">Est. 2024 · Hudson Valley, NY</div>
-          <h1 className="h-display" style={{ fontSize: 'clamp(48px, 7vw, 88px)', margin: '24px 0' }}>
-                Better daily care for <span className="h-italic">your dog.</span>
+              <h1 className="h-display" style={{ fontSize: 'clamp(48px, 7vw, 88px)', margin: '24px 0' }}>
+                A studio for dogs whose <span className="h-italic">stories live on.</span>
               </h1>
               <p className="lede" style={{ fontSize: 19 }}>
-                Dog wipes and dental water for everyday grooming. Legacy Studio only when remembrance is the need.
+                Memorial books, tribute prints, and personalized letters. Made for the moment after goodbye.
               </p>
               <div className="row" style={{ marginTop: 28, gap: 14, flexWrap: 'wrap' }}>
-                <button className="btn btn-primary btn-lg" onClick={() => navigate('shop')}>Shop wipes</button>
-                <button className="btn btn-outline btn-lg" onClick={() => navigate('subscribe')}>Subscribe &amp; save 15%</button>
+                <button className="btn btn-primary btn-lg" onClick={() => navigate('legacy')}>Explore Legacy Studio</button>
+                <button className="btn btn-outline btn-lg" onClick={() => navigate('contact')}>Ask a question</button>
               </div>
             </div>
           </div>
@@ -286,36 +204,36 @@ function Hero({ layout = 'split' }) {
         <div>
           <span className="pill">PawApothecary · Est. 2024</span>
           <h1 className="h-display" style={{ fontSize: 'clamp(48px, 7.5vw, 92px)', margin: '22px 0 18px' }}>
-            Clean ingredients.<br />
-            <span className="h-italic" style={{ color: 'var(--forest)' }}>Happy dogs.</span>
+            For the dog whose<br />
+            <span className="h-italic" style={{ color: 'var(--forest)' }}>story continues.</span>
           </h1>
           <p className="lede" style={{ fontSize: 19, maxWidth: 520 }}>
-            PawApothecary is built around dog grooming and dog memorials: wipes and dental water for everyday care, and Legacy Studio for honoring a dog after loss.
+            Dog Legacy Studio creates memorial books, tribute art, and personalized letters for families honoring a dog’s life after loss.
           </p>
           <div className="row" style={{ marginTop: 32, gap: 14, flexWrap: 'wrap' }}>
-            <button className="btn btn-primary btn-lg" onClick={() => navigate('shop')}>Shop wipes</button>
-            <button className="btn btn-gold btn-lg" onClick={() => navigate('subscribe')}>Subscribe &amp; save 15%</button>
+            <button className="btn btn-primary btn-lg" onClick={() => navigate('legacy')}>Explore Legacy Studio</button>
+            <button className="btn btn-gold btn-lg" onClick={() => navigate('contact')}>Ask a question</button>
           </div>
           <div className="row" style={{ marginTop: 36, gap: 28, flexWrap: 'wrap' }}>
             <div>
               <Stars value={4.9} />
-              <div className="small" style={{ marginTop: 4 }}>4.9 from 2,412 reviews</div>
+              <div className="small" style={{ marginTop: 4 }}>4.9 from 800+ families</div>
             </div>
             <div className="divider" style={{ width: 1, height: 36, background: 'rgba(0,0,0,.1)' }} />
             <div className="small">
-              <strong style={{ color: 'var(--ink)', display: 'block', fontWeight: 600 }}>Vet-developed</strong>
-              with groomers in the Hudson Valley
+              <strong style={{ color: 'var(--ink)', display: 'block', fontWeight: 600 }}>Digital proof</strong>
+              within 24 hours of your order
             </div>
           </div>
         </div>
         <div style={{ position: 'relative' }}>
-          <Placeholder label="happy dog · field shot" tone="forest" aspect="4 / 5" />
+          <Placeholder label="dog portrait · golden hour" tone="forest" aspect="4 / 5" />
           <div style={{ position: 'absolute', bottom: -28, left: -28, width: 220 }}>
-            <Placeholder label="product · 80 ct" tone="gold" aspect="3 / 4" />
+            <Placeholder label="memorial book" tone="gold" aspect="3 / 4" />
           </div>
           <div style={{ position: 'absolute', top: 24, right: 8, background: '#fff', borderRadius: 12, padding: 14, boxShadow: '0 8px 24px rgba(0,0,0,.08)', width: 200 }}>
-            <div className="eyebrow" style={{ marginBottom: 4 }}>Vet approved</div>
-            <div style={{ fontSize: 13, lineHeight: 1.45 }}>“Gentle enough for my own dachshund.” <span className="muted">— Dr. Lin, DVM</span></div>
+            <div className="eyebrow" style={{ marginBottom: 4 }}>Made to order</div>
+            <div style={{ fontSize: 13, lineHeight: 1.45 }}>"Nothing I found anywhere else came close." <span className="muted">— Hana K.</span></div>
           </div>
         </div>
       </div>
@@ -341,19 +259,19 @@ function EmailCapture({ variant = 'light' }) {
         style={dark ? { background: 'rgba(255,255,255,.08)', border: '1px solid rgba(255,255,255,.2)', color: '#fff' } : {}}
       />
       <button type="submit" className="btn btn-gold btn-lg" style={{ height: 48 }}>
-        {done ? 'You\u2019re in ✓' : 'Get 10% off'}
+        {done ? 'You’re in ✓' : 'Subscribe'}
       </button>
     </form>
   );
 }
 
 const BLOG_POSTS = [
-  { slug: 'how-often-wipe-dog', title: 'How often should you wipe your dog?', excerpt: 'A vet-backed guide to between-bath grooming for every coat type.', category: 'Grooming Tips', date: 'May 12, 2026', read: 6, image: 'dog in towel' },
-  { slug: 'natural-wipes-5-reasons', title: '5 reasons to switch to natural dog wipes', excerpt: 'Why the wipes most owners pick up at the dog-care aisle are doing more harm than good.', category: 'Natural Ingredients', date: 'May 04, 2026', read: 4, image: 'wipes flat-lay' },
-  { slug: 'chemicals-truth', title: 'The truth about chemicals in dog grooming products', excerpt: 'We read 142 ingredient labels so you don\u2019t have to. Here\u2019s what we found.', category: 'Natural Ingredients', date: 'Apr 22, 2026', read: 9, image: 'lab samples' },
-  { slug: 'paw-care-101', title: 'Paw care 101 — protecting your dog between baths', excerpt: 'Mud, salt, hot pavement: the four-step routine that keeps pads soft and healthy.', category: 'Dog Health', date: 'Apr 15, 2026', read: 5, image: 'paw pads close-up' },
-  { slug: 'ingredients-to-avoid', title: 'What ingredients to avoid in dog grooming products', excerpt: 'A printable cheat-sheet for your next dog-care run.', category: 'Natural Ingredients', date: 'Apr 02, 2026', read: 7, image: 'cheat sheet card' },
-  { slug: 'natural-routine', title: 'How to build a natural grooming routine', excerpt: 'A simple weekly schedule from a Hudson Valley groomer of 22 years.', category: 'Grooming Tips', date: 'Mar 24, 2026', read: 8, image: 'grooming station' },
+  { slug: 'how-to-honor-your-dog', title: 'How to honor a dog who changed your life', excerpt: 'Practical and meaningful ways to preserve a dog’s memory after loss — from a studio that has helped hundreds of families.', category: 'Remembrance', date: 'May 12, 2026', read: 6, image: 'dog portrait · golden' },
+  { slug: 'memorial-book-guide', title: 'What makes a memorial book worth keeping', excerpt: 'The difference between a photo album and a true tribute — and why the details matter more than you think.', category: 'Keepsakes', date: 'May 04, 2026', read: 4, image: 'memorial book open' },
+  { slug: 'writing-about-your-dog', title: 'How to write about a dog you loved', excerpt: 'A gentle guide for finding the words when grief makes them hard to find.', category: 'Grief & Memory', date: 'Apr 22, 2026', read: 9, image: 'writing journal' },
+  { slug: 'tribute-art-ideas', title: 'Tribute art ideas for the dog you miss most', excerpt: 'From framed portraits to wall installations — the options, the materials, and what to consider.', category: 'Keepsakes', date: 'Apr 15, 2026', read: 5, image: 'tribute print framed' },
+  { slug: 'gifts-for-grieving-dog-owners', title: 'Meaningful gifts for someone who lost a dog', excerpt: 'A curated list from people who have been there — what helped, what didn’t, and why a letter changes everything.', category: 'Remembrance', date: 'Apr 02, 2026', read: 7, image: 'gift box' },
+  { slug: 'legacy-studio-process', title: 'How Legacy Studio builds your keepsake', excerpt: 'A behind-the-scenes look at our design and production process, from your photos to your front door.', category: 'Behind the Studio', date: 'Mar 24, 2026', read: 8, image: 'studio desk' },
 ];
 
 function BlogCard({ post }) {
