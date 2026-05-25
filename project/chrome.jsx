@@ -113,7 +113,7 @@ function SearchOverlay({ open, onClose }) {
               ref={inputRef}
               value={q}
               onChange={e => setQ(e.target.value)}
-              placeholder=”Try memorial book, tribute art, or letter…”
+              placeholder="Try memorial book, tribute art, or letter…"
               style={{
                 width: '100%', padding: '20px 20px 20px 52px',
                 fontSize: 22, fontFamily: 'var(--serif)',
