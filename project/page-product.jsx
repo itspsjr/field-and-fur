@@ -1,8 +1,15 @@
-// Product page — Hero Dog Grooming Wipes (or selected product)
+// Product page — redirects to Legacy Studio when no product found
 
 function ProductPage() {
   const { navigate, params, addToCart } = React.useContext(AppCtx);
-  const product = (PRODUCTS.concat(UPSELLS)).find(p => p.id === params.id) || PRODUCTS[0];
+  const product = (PRODUCTS.concat(UPSELLS)).find(p => p.id === params.id);
+
+  React.useEffect(() => {
+    if (!product) navigate('legacy');
+  }, [product]);
+
+  if (!product) return null;
+
   const [subscribe, setSubscribe] = React.useState(true);
   const [qty, setQty] = React.useState(1);
   const [tab, setTab] = React.useState('ingredients');

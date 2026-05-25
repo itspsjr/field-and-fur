@@ -6,8 +6,8 @@ function BlogPostPage() {
   const others = BLOG_POSTS.filter(p => p.slug !== post.slug).slice(0, 3);
   const [comment, setComment] = React.useState('');
   const [comments, setComments] = React.useState([
-    { name: 'Sara D.', avatar: 'sage', date: '2 days ago', body: 'Saving this. We just started wiping after every walk and our shedding is way down.' },
-    { name: 'Ravi M.', avatar: 'cream', date: '4 days ago', body: 'Helpful breakdown. Our French bulldog has fold dermatitis and our vet recommended exactly this routine.' },
+    { name: 'Sara D.', avatar: 'sage', date: '2 days ago', body: 'This helped me so much. I ordered the memorial book and it arrived exactly as described. Reading this made me feel less alone in the process.' },
+    { name: 'Ravi M.', avatar: 'cream', date: '4 days ago', body: 'We lost our French bulldog last month and finding the right words has been the hardest part. This article said exactly what I couldn’t.' },
   ]);
 
   return (
@@ -65,7 +65,7 @@ function BlogPostPage() {
         {/* TAGS */}
         <div className="row" style={{ marginTop: 40, gap: 8, flexWrap: 'wrap' }}>
           <span className="small mono">TAGS</span>
-          {['dog care', 'grooming', 'wipes', 'paw health', post.category.toLowerCase()].map(t => (
+          {['dog loss', 'remembrance', 'keepsakes', 'memorial', post.category.toLowerCase()].map(t => (
             <span key={t} className="pill cream">#{t.replace(/\s+/g, '')}</span>
           ))}
         </div>
@@ -112,42 +112,42 @@ function PostBody() {
   return (
     <div style={{ fontSize: 18, lineHeight: 1.75, color: 'var(--ink-2)' }}>
       <p style={{ fontSize: 22, lineHeight: 1.55, color: 'var(--ink)', marginTop: 0 }}>
-        Most dog owners we talk to ask the same question on day one: <em>am I supposed to be wiping my dog every day?</em> The honest answer is — it depends, but probably more than you think.
+        Most families we work with ask the same thing when they reach out: <em>how do I even start?</em> The honest answer is — you don't need to have the words yet. You just need to begin.
       </p>
       <p>
-        Dogs are walking sensory organs. Their paws collect everything from pollen and pesticides to road salt and parking-lot grit. Their fold-prone faces hold dander, food residue, and oil. None of these are catastrophic on their own — but over weeks and months, they're the difference between a flaky, itchy dog and a sleek, comfortable one.
+        A dog's story is made of small things. The morning routine. The corner of the couch they claimed. The sound of the tags on the stairs. These details feel ordinary until they're gone — and then they're the most important things you can preserve.
       </p>
 
       <h2 className="h-display" style={{ fontSize: 30, color: 'var(--ink)', margin: '40px 0 12px', lineHeight: 1.2 }}>
-        A simple cadence
+        Start with what you remember
       </h2>
       <p>
-        For most dogs, we recommend a quick paw wipe after every walk, a full-body wipe twice a week, and a face-and-ear pass during weekly nail trims. Less in winter, more in pollen season.
+        Before you think about formats or products, spend ten minutes writing down the details you're afraid you'll forget. The name of their favorite walk. The food they begged for. The face they made at bath time. These notes become the material everything else is built from.
       </p>
 
       <blockquote style={{ borderLeft: '3px solid var(--gold)', paddingLeft: 24, margin: '32px 0', fontStyle: 'italic', fontSize: 22, fontFamily: 'var(--serif)', color: 'var(--ink)' }}>
-        "Skin is the body's biggest organ. Treat it like the inside of a house — clean it gently, consistently, and don't use harsh chemicals you wouldn't trust on your own hands."
-        <footer style={{ marginTop: 12, fontSize: 14, color: 'var(--ink-3)', fontStyle: 'normal', fontFamily: 'var(--sans)' }}>— Dr. Hana Lin, DVM</footer>
+        "Grief asks us to hold two things at once: the loss and the love. A good memorial does that too — it sits quietly with both."
+        <footer style={{ marginTop: 12, fontSize: 14, color: 'var(--ink-3)', fontStyle: 'normal', fontFamily: 'var(--sans)' }}>— Maya Chen, co-founder</footer>
       </blockquote>
 
       <h2 className="h-display" style={{ fontSize: 30, color: 'var(--ink)', margin: '40px 0 12px', lineHeight: 1.2 }}>
-        What to look for
+        What makes a keepsake worth keeping
       </h2>
       <p>
-        Healthy skin looks calm. Patchy redness, crusty paw pads, or excessive licking are all signals that something — usually environmental — is irritating the skin barrier. The right wipe should clean without stripping the natural oils that keep that barrier intact.
+        The memorials that families return to years later share one quality: specificity. Not "she was a good dog" but "she waited by the blue door every afternoon at 4:15." The more particular, the more alive.
       </p>
       <ul style={{ paddingLeft: 22 }}>
-        <li>Soft, supple paw pads (not cracked or hot)</li>
-        <li>A coat that smells faintly of dog, not of perfume</li>
-        <li>Clear eyes, with minimal tear staining</li>
-        <li>Ears that don't smell yeasty</li>
+        <li>Their name, their dates — and one sentence about who they were</li>
+        <li>At least one photo that shows their personality, not just their face</li>
+        <li>A detail only your family would know</li>
+        <li>The feeling of the house before and after</li>
       </ul>
 
       <h2 className="h-display" style={{ fontSize: 30, color: 'var(--ink)', margin: '40px 0 12px', lineHeight: 1.2 }}>
-        The two-minute routine
+        You don't have to do this alone
       </h2>
       <p>
-        We've watched a lot of owners try to over-engineer this. You don't need to. Two minutes, one wipe, a treat, done. Consistency beats intensity — every time.
+        That's what Legacy Studio is for. You send us the raw material — the photos, the dates, the notes — and a designer shapes it into something worth keeping. Two revisions, no rush, a proof in 24 hours. The hard part is remembering. We handle the rest.
       </p>
     </div>
   );

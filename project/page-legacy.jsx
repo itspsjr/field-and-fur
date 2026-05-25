@@ -314,7 +314,7 @@ function LegacyServicesPage() {
           <SectionHeader
             eyebrow="Legacy services"
             title="Dog keepsakes for the bond that outlives the routine."
-            lede="This is not positioned like an everyday grooming product. It is a quieter studio for photos, dates, routines, and stories when a dog’s life is ready to be honored."
+            lede="Legacy Studio is a separate remembrance service — for photos, dates, routines, and stories when a dog’s life is ready to be honored."
             action={<button className="btn btn-ghost" onClick={() => navigate('contact')}>Ask the studio →</button>}
           />
           <div className="legacy-grid">

@@ -1,8 +1,7 @@
-// Subscribe & Save / Bundle builder page
+// Subscribe page — Legacy Studio ongoing plans only
 
 function SubscribePage() {
   const { navigate, addToCart } = React.useContext(AppCtx);
-  const subbable = PRODUCTS.concat(UPSELLS).filter(p => p.id !== 'bundle');
   const legacyPlans = [
     {
       id: 'legacy-anniversary',
@@ -53,16 +52,10 @@ function SubscribePage() {
       short: 'Each year, we turn new photos and favorite moments into a small chapter you can print or save.',
     },
   ];
-  const [selected, setSelected] = React.useState({ 'wipes-hero': 1, 'paw-wipes': 1, 'dental-water': 1 });
-  const [legacySelected, setLegacySelected] = React.useState({ 'legacy-anniversary': 1 });
-  const [frequency, setFrequency] = React.useState(4);
 
-  const items = Object.entries(selected).filter(([, q]) => q > 0).map(([id, qty]) => ({ ...PRODUCTS.concat(UPSELLS).find(p => p.id === id), qty }));
-  const legacyItems = Object.entries(legacySelected).filter(([, q]) => q > 0).map(([id, qty]) => ({ ...legacyPlans.find(p => p.id === id), qty }));
-  const allItems = items.concat(legacyItems);
-  const monthlyRetail = allItems.reduce((s, p) => s + p.price * p.qty, 0);
-  const monthlySub = allItems.reduce((s, p) => s + p.subPrice * p.qty, 0);
-  const savings = monthlyRetail - monthlySub;
+  const [selected, setSelected] = React.useState({ 'legacy-anniversary': 1 });
+  const selectedItems = legacyPlans.filter(p => selected[p.id] > 0);
+  const monthly = selectedItems.reduce((s, p) => s + p.subPrice * (selected[p.id] || 0), 0);
 
   return (
     <main className="page-fade">
@@ -70,33 +63,32 @@ function SubscribePage() {
       <section style={{ background: 'var(--bg-cream)', padding: '64px 0 48px' }}>
         <div className="wrap grid-split" style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 56, alignItems: 'center' }}>
           <div>
-            <span className="pill gold">★ Subscribe &amp; Save 15%</span>
+            <span className="pill gold">Legacy Studio ongoing plans</span>
             <h1 className="h-display" style={{ fontSize: 'clamp(40px, 6vw, 76px)', margin: '14px 0 16px' }}>
-              Subscribe to the products you actually use.
+              Stay close to the memory all year.
             </h1>
             <p className="lede" style={{ marginTop: 0 }}>
-              Set a cadence for everyday dog grooming items like wipes and dental water. Legacy Studio stays optional and separate because memorial work is not a routine refill.
+              These plans are for families who want ongoing support — gentle reminders, a growing photo archive, and yearly story updates for dogs still making memories.
             </p>
             <div className="row" style={{ marginTop: 20, gap: 18 }}>
-              <Stat n="15%" l="off every order" />
+              <Stat n="24h" l="first response" />
               <Stat n="$0" l="signup fee" />
-              <Stat n="2,400+" l="active subscribers" />
+              <Stat n="Cancel" l="anytime" />
             </div>
           </div>
-          <Placeholder label="four canisters · field kit" tone="forest" aspect="1 / 1" />
+          <Placeholder label="yearly keepsake · memorial plans" tone="forest" aspect="1 / 1" />
         </div>
       </section>
 
       {/* HOW IT WORKS */}
       <section className="section">
         <div className="wrap">
-          <SectionHeader eyebrow="How it works" title="Four steps. Two minutes." />
-          <div className="grid-4-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+          <SectionHeader eyebrow="How it works" title="Three steps. No rush." />
+          <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
             {[
-              ['01', 'Choose dog wipes', 'Pick the wipe formats your dog uses after walks, meals, and muddy days.'],
-              ['02', 'Add dental water', 'Keep the breath-support product arriving before the bottle runs out.'],
-              ['03', 'Save 15% every order', 'Subscriber price kicks in immediately. Free shipping over $35.'],
-              ['04', 'Cancel anytime', 'No phone calls, no hoops. Pause from your account in one click.'],
+              ['01', 'Choose a plan', 'Pick the level of ongoing support that fits where you are — an anniversary reminder, a growing archive, or a yearly chapter.'],
+              ['02', 'We remember with you', 'On meaningful dates, during your archive window, or at your yearly update, we reach out and do the work.'],
+              ['03', 'Cancel anytime', 'No phone calls, no hoops. Pause or cancel from your account in one click. No minimum commitment.'],
             ].map(([n, t, d]) => (
               <div key={n} className="card" style={{ padding: 22 }}>
                 <div className="h-display" style={{ fontSize: 36, color: 'var(--gold)', lineHeight: 1, marginBottom: 8 }}>{n}</div>
@@ -108,127 +100,63 @@ function SubscribePage() {
         </div>
       </section>
 
-      {/* LEGACY STUDIO PLANS */}
-      <section className="section" style={{ background: 'var(--bg-cream)' }}>
-        <div className="wrap grid-split subscribe-legacy">
-          <div>
-            <div className="eyebrow" style={{ marginBottom: 12 }}>Dog Legacy Studio add-ons</div>
-            <h2 className="h-display" style={{ fontSize: 'clamp(32px, 4.5vw, 56px)', margin: 0 }}>
-              Legacy Studio is not a normal subscription.
-            </h2>
-            <p className="lede" style={{ marginTop: 16 }}>
-              These optional plans are for reminders, private archives, and yearly story updates. They are presented separately from wipes and dental water because remembrance needs a different tone.
-            </p>
-            <button className="btn btn-outline" style={{ marginTop: 22 }} onClick={() => navigate('legacy')}>Explore one-time keepsakes →</button>
-          </div>
-          <div style={{ display: 'grid', gap: 12 }}>
-            {legacyPlans.map(plan => {
-              const qty = legacySelected[plan.id] || 0;
-              return (
-                <div key={plan.id} className="card subscribe-legacy-card">
-                  <Placeholder label="" tone={plan.tone} aspect="1 / 1" style={{ borderRadius: 10 }} />
-                  <div>
-                    <div className="row" style={{ gap: 10, flexWrap: 'wrap' }}>
-                      <h3 className="h-display" style={{ fontSize: 20, margin: 0 }}>{plan.name}</h3>
-                      <span className="pill gold">{plan.badge}</span>
-                    </div>
-                    <p className="small" style={{ margin: '6px 0 8px', color: 'var(--ink-2)' }}>{plan.short}</p>
-                    <div className="small">
-                      <strong>${plan.subPrice.toFixed(2)}/month</strong>
-                      <span className="muted"> · added to your subscription</span>
-                    </div>
-                  </div>
-                  <div className="row" style={{ border: '1px solid var(--line)', borderRadius: 999, padding: 2, background: '#fff', height: 40 }}>
-                    <button onClick={() => setLegacySelected({ ...legacySelected, [plan.id]: Math.max(0, qty - 1) })} style={{ width: 32, height: 32, border: 0, borderRadius: 999, background: 'transparent', cursor: 'default' }}>−</button>
-                    <span className="mono" style={{ minWidth: 22, textAlign: 'center', fontVariantNumeric: 'tabular-nums' }}>{qty}</span>
-                    <button onClick={() => setLegacySelected({ ...legacySelected, [plan.id]: qty + 1 })} style={{ width: 32, height: 32, border: 0, borderRadius: 999, background: 'transparent', cursor: 'default' }}>+</button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* BUILDER */}
+      {/* PLANS + SUMMARY */}
       <section className="section" style={{ background: 'var(--bg-sage)' }}>
         <div className="wrap">
-          <SectionHeader eyebrow="Bundle builder" title="Build your monthly box" lede="Add what you'll use. The math updates in real time." />
+          <SectionHeader eyebrow="Ongoing plans" title="Choose what fits" lede="You can hold more than one plan. Changes apply before the next billing date." />
           <div className="grid-split" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 32, alignItems: 'flex-start' }}>
-            <div style={{ display: 'grid', gap: 12 }}>
-              {subbable.map(p => {
-                const qty = selected[p.id] || 0;
+            <div style={{ display: 'grid', gap: 16 }}>
+              {legacyPlans.map(plan => {
+                const qty = selected[plan.id] || 0;
                 return (
-                  <div key={p.id} className="card" style={{ padding: 18, display: 'grid', gridTemplateColumns: '80px 1fr auto', gap: 16, alignItems: 'center' }}>
-                    <Placeholder label="" tone={p.tone} aspect="1 / 1" style={{ borderRadius: 8 }} />
+                  <div key={plan.id} className="card" style={{ padding: 22, display: 'grid', gridTemplateColumns: '80px 1fr auto', gap: 18, alignItems: 'center' }}>
+                    <Placeholder label="" tone={plan.tone} aspect="1 / 1" style={{ borderRadius: 10 }} />
                     <div>
-                      <h3 className="h-display" style={{ fontSize: 19, margin: 0 }} dangerouslySetInnerHTML={{ __html: p.name }} />
-                      <div className="small" style={{ marginTop: 4 }}>
-                        <span style={{ textDecoration: 'line-through', color: 'var(--ink-3)' }}>${p.price.toFixed(2)}</span>
-                        <span style={{ marginLeft: 6, color: 'var(--forest)', fontWeight: 600 }}>${p.subPrice.toFixed(2)} subscribed</span>
+                      <div className="row" style={{ gap: 8, flexWrap: 'wrap', marginBottom: 4 }}>
+                        <h3 className="h-display" style={{ fontSize: 19, margin: 0 }}>{plan.name}</h3>
+                        <span className="pill gold">{plan.badge}</span>
                       </div>
+                      <p className="small" style={{ margin: '0 0 6px', color: 'var(--ink-2)', lineHeight: 1.5 }}>{plan.short}</p>
+                      <strong style={{ fontSize: 14 }}>${plan.subPrice.toFixed(2)}/month</strong>
                     </div>
                     <div className="row" style={{ border: '1px solid var(--line)', borderRadius: 999, padding: 2, background: '#fff', height: 40 }}>
-                      <button onClick={() => setSelected({ ...selected, [p.id]: Math.max(0, qty - 1) })} style={{ width: 32, height: 32, border: 0, borderRadius: 999, background: 'transparent', cursor: 'default' }}>−</button>
+                      <button onClick={() => setSelected({ ...selected, [plan.id]: Math.max(0, qty - 1) })} style={{ width: 32, height: 32, border: 0, borderRadius: 999, background: 'transparent', cursor: 'default' }}>−</button>
                       <span className="mono" style={{ minWidth: 22, textAlign: 'center', fontVariantNumeric: 'tabular-nums' }}>{qty}</span>
-                      <button onClick={() => setSelected({ ...selected, [p.id]: qty + 1 })} style={{ width: 32, height: 32, border: 0, borderRadius: 999, background: 'transparent', cursor: 'default' }}>+</button>
+                      <button onClick={() => setSelected({ ...selected, [plan.id]: qty + 1 })} style={{ width: 32, height: 32, border: 0, borderRadius: 999, background: 'transparent', cursor: 'default' }}>+</button>
                     </div>
                   </div>
                 );
               })}
             </div>
 
-            {/* SAVINGS PANEL */}
+            {/* SUMMARY PANEL */}
             <aside className="card" style={{ padding: 26, position: 'sticky', top: 92 }}>
-              <h3 className="h-display" style={{ fontSize: 22, margin: '0 0 6px' }}>Your box</h3>
-              <p className="small" style={{ marginBottom: 16 }}>{allItems.length} {allItems.length === 1 ? 'item' : 'items'} · ships every {frequency} weeks</p>
-
-              <label className="label">Frequency</label>
-              <div className="row" style={{ gap: 6, marginBottom: 16 }}>
-                {[4, 6, 8].map(w => (
-                  <button key={w} onClick={() => setFrequency(w)} style={{
-                    flex: 1, padding: '10px 0', borderRadius: 10,
-                    background: frequency === w ? 'var(--forest)' : '#fff',
-                    color: frequency === w ? '#fff' : 'var(--ink-2)',
-                    border: frequency === w ? '1px solid var(--forest)' : '1px solid var(--line)',
-                    fontSize: 14, fontWeight: frequency === w ? 600 : 500,
-                    cursor: 'default',
-                  }}>{w} wk</button>
-                ))}
-              </div>
-
-              {legacyItems.length > 0 && (
-                <div className="card-sage" style={{ padding: 12, borderRadius: 8, marginBottom: 14, fontSize: 13 }}>
-                  <strong>Legacy Studio add-ons included:</strong>
-                  <div style={{ marginTop: 6, display: 'grid', gap: 4 }}>
-                    {legacyItems.map(item => (
-                      <span key={item.id}>{item.qty}× {item.name}</span>
-                    ))}
-                  </div>
+              <h3 className="h-display" style={{ fontSize: 22, margin: '0 0 6px' }}>Your plans</h3>
+              <p className="small" style={{ marginBottom: 16 }}>{selectedItems.length} {selectedItems.length === 1 ? 'plan' : 'plans'} selected</p>
+              {selectedItems.length > 0 ? (
+                <div style={{ display: 'grid', gap: 8, marginBottom: 14 }}>
+                  {selectedItems.map(p => (
+                    <div key={p.id} className="row" style={{ justifyContent: 'space-between' }}>
+                      <span className="small">{p.name}</span>
+                      <span className="small" style={{ fontWeight: 600 }}>${p.subPrice.toFixed(2)}/mo</span>
+                    </div>
+                  ))}
                 </div>
+              ) : (
+                <p className="small" style={{ color: 'var(--ink-3)', marginBottom: 14 }}>No plans selected yet.</p>
               )}
-
-              <div className="divider" />
-              <div className="col" style={{ gap: 6, marginTop: 14 }}>
-                <Line label="Retail price" value={`$${monthlyRetail.toFixed(2)}`} />
-                <Line label="Subscriber discount (15%)" value={`−$${savings.toFixed(2)}`} />
-                <Line label="Shipping" value={monthlySub >= 35 ? 'Free' : '$5.95'} />
-              </div>
-              <div className="divider" style={{ margin: '14px 0' }} />
-              <div className="row" style={{ justifyContent: 'space-between' }}>
-                <span style={{ fontWeight: 600 }}>You pay</span>
-                <span style={{ fontWeight: 700, fontSize: 24 }}>${(monthlySub + (monthlySub >= 35 ? 0 : 5.95)).toFixed(2)}</span>
-              </div>
-              <div className="card-sage" style={{ padding: 12, borderRadius: 8, marginTop: 14, fontSize: 13 }}>
-                You save <strong>${savings.toFixed(2)}/order</strong> · <strong>${(savings * (52 / frequency)).toFixed(0)}/year</strong>
+              <div className="divider" style={{ margin: '0 0 14px' }} />
+              <div className="row" style={{ justifyContent: 'space-between', marginBottom: 16 }}>
+                <span style={{ fontWeight: 600 }}>Monthly total</span>
+                <span style={{ fontWeight: 700, fontSize: 24 }}>${monthly.toFixed(2)}</span>
               </div>
               <button
-                disabled={allItems.length === 0}
+                disabled={selectedItems.length === 0}
                 className="btn btn-primary btn-lg"
-                style={{ width: '100%', marginTop: 14, opacity: allItems.length === 0 ? 0.5 : 1 }}
-                onClick={() => { allItems.forEach(it => addToCart(it, it.qty, true)); navigate('cart'); }}
+                style={{ width: '100%', opacity: selectedItems.length === 0 ? 0.5 : 1 }}
+                onClick={() => { selectedItems.forEach(p => addToCart(p, selected[p.id] || 1, true)); navigate('cart'); }}
               >
-                Start subscription →
+                Start plan →
               </button>
               <div className="small center" style={{ marginTop: 10 }}>Skip, pause, or cancel anytime.</div>
             </aside>
@@ -236,36 +164,30 @@ function SubscribePage() {
         </div>
       </section>
 
-      {/* TRUST */}
-      <section className="section-tight" style={{ background: '#fff' }}>
-        <div className="wrap">
-          <div className="row" style={{ justifyContent: 'space-around', flexWrap: 'wrap', gap: 24 }}>
-            {[
-              ['Free shipping over $35', 'orders ship in recycled mailers'],
-              ['Cancel anytime', 'no calls, no scripts, one click'],
-              ['30-day money-back', 'don\u2019t love it? we\u2019ll refund you'],
-              ['Vet-developed', 'reviewed by Dr. Hana Lin, DVM'],
-            ].map(([t, d]) => (
-              <div key={t} style={{ textAlign: 'center', maxWidth: 200 }}>
-                <CheckLeaf />
-                <div style={{ fontWeight: 600, fontSize: 14, marginTop: 8 }}>{t}</div>
-                <div className="small" style={{ marginTop: 2 }}>{d}</div>
-              </div>
-            ))}
-          </div>
+      {/* ONE-TIME CTA */}
+      <section className="section-tight" style={{ background: 'var(--bg-cream)' }}>
+        <div className="wrap center" style={{ maxWidth: 640, margin: '0 auto' }}>
+          <div className="eyebrow">Not sure yet?</div>
+          <h2 className="h-display" style={{ fontSize: 'clamp(28px, 4vw, 40px)', margin: '14px 0 16px' }}>
+            One-time keepsakes are always available.
+          </h2>
+          <p className="lede" style={{ margin: '0 auto 24px' }}>
+            A memorial book, tribute print, or letter doesn't require a plan. Browse all Legacy Studio services and order when you're ready.
+          </p>
+          <button className="btn btn-outline btn-lg" onClick={() => navigate('legacy')}>Explore one-time keepsakes →</button>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="section" style={{ background: 'var(--bg-cream)' }}>
         <div className="wrap" style={{ maxWidth: 800, marginInline: 'auto' }}>
-          <SectionHeader eyebrow="Subscription FAQ" title="Common questions" align="center" />
+          <SectionHeader eyebrow="Plan FAQ" title="Common questions" align="center" />
           <FAQList items={[
-            { q: 'Can I change my products mid-subscription?', a: 'Yes — swap, add, or remove products anytime from your account dashboard. Changes apply to your next shipment.' },
-            { q: 'What if 4 weeks is too often?', a: 'Set your cadence to 6 or 8 weeks. You can also skip any shipment from your account.' },
-            { q: 'How do I cancel?', a: 'One click from your account. We don\u2019t ask why or try to talk you out of it. We do appreciate feedback if you want to share.' },
-            { q: 'Is there a minimum commitment?', a: 'None. You can cancel after a single shipment and keep the 15% discount on that order.' },
-            { q: 'When am I charged?', a: 'You\u2019re charged the day each shipment processes. We\u2019ll send an email a few days before so there are no surprises.' },
+            { q: 'What is the Anniversary Remembrance Plan?', a: 'We track meaningful dates — adoption day, birthday, and the day you said goodbye — and send gentle emails and one printed card each year. Nothing intrusive, nothing salesy. Just a quiet reminder that we remember too.' },
+            { q: 'How does the Memory Archive work?', a: 'You can add photos and brief notes to a private vault throughout the year. When you\'re ready for a book, tribute page, or memorial piece, the material is already organized and waiting.' },
+            { q: 'Can I have more than one plan?', a: 'Yes. Many families combine the archive with anniversary reminders. You can also add the yearly story update if your dog is still with you and making new memories.' },
+            { q: 'How do I cancel?', a: 'One click from your account. We don\'t ask why or try to talk you out of it. We appreciate feedback if you want to share, but it\'s never required.' },
+            { q: 'Is there a minimum commitment?', a: 'None. You can cancel after a single month. The anniversary card is mailed on your next meaningful date after signup — if you cancel before then, we\'ll pro-rate a refund.' },
           ]} />
         </div>
       </section>

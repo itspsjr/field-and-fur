@@ -160,7 +160,7 @@ function ContactStep({ data, setData, errors }) {
         </FormField>
         <div style={{ gridColumn: 'span 12', display: 'flex', gap: 10, alignItems: 'center', marginTop: 4 }}>
           <input type="checkbox" id="news" defaultChecked />
-          <label htmlFor="news" className="small">Email me grooming tips and 10% off my first order.</label>
+          <label htmlFor="news" className="small">Email me studio updates and stories of dogs remembered.</label>
         </div>
       </div>
     </div>
@@ -311,7 +311,7 @@ function Confirmation() {
             Order placed. <span className="h-italic">Tails are wagging.</span>
           </h1>
           <p className="lede" style={{ margin: '0 auto 28px' }}>
-            We've sent a confirmation email with your order details. Your wipes are being packed in upstate New York and will ship in the next 24 hours.
+            We've sent a confirmation email with your order details. A designer from our studio will be in touch within 24 hours to begin your keepsake.
           </p>
           <div className="row" style={{ justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
             <button className="btn btn-primary" onClick={() => navigate('home')}>Back to home</button>
@@ -320,7 +320,7 @@ function Confirmation() {
           <div className="card-sage" style={{ padding: 24, marginTop: 48, borderRadius: 14, textAlign: 'left' }}>
             <h3 className="h-display" style={{ fontSize: 20, margin: '0 0 8px' }}>While you wait —</h3>
             <p className="small" style={{ color: 'var(--ink-2)', margin: 0 }}>
-              Check out the Field Journal for paw care tips, or follow <strong>@fieldandfur</strong> on Instagram to see the pack.
+              Read the Field Journal for stories and guidance, or follow <strong>@everafterpaw</strong> on Instagram to see the work we've done.
             </p>
           </div>
         </div>

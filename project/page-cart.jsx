@@ -8,10 +8,10 @@ function CartPage() {
       <main className="page-fade">
         <section className="section">
           <div className="wrap center" style={{ maxWidth: 520, margin: '0 auto', paddingTop: 60, paddingBottom: 60 }}>
-            <Placeholder label="empty canister" tone="sage" aspect="1 / 1" style={{ maxWidth: 200, margin: '0 auto 24px' }} />
+            <Placeholder label="empty memory box" tone="sage" aspect="1 / 1" style={{ maxWidth: 200, margin: '0 auto 24px' }} />
             <h1 className="h-display" style={{ fontSize: 40, margin: '0 0 12px' }}>Your cart is <span className="h-italic">empty.</span></h1>
-            <p className="lede" style={{ margin: '0 auto 24px' }}>Nothing in the bag yet — let's fix that.</p>
-            <button className="btn btn-primary btn-lg" onClick={() => navigate('shop')}>Browse the line</button>
+            <p className="lede" style={{ margin: '0 auto 24px' }}>Nothing in the bag yet — explore Legacy Studio keepsakes.</p>
+            <button className="btn btn-primary btn-lg" onClick={() => navigate('legacy')}>Explore keepsakes</button>
           </div>
         </section>
       </main>

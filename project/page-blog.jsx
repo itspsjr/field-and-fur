@@ -5,7 +5,7 @@ function BlogPage() {
   const [category, setCategory] = React.useState('All');
   const [query, setQuery] = React.useState('');
 
-  const categories = ['All', 'Dog Health', 'Grooming Tips', 'Natural Ingredients', 'Dog Care', 'Product Updates'];
+  const categories = ['All', 'Remembrance', 'Keepsakes', 'Grief & Memory', 'Behind the Studio', 'Dog Stories'];
   const filtered = BLOG_POSTS.filter(p =>
     (category === 'All' || p.category === category) &&
     (query === '' || (p.title + p.excerpt).toLowerCase().includes(query.toLowerCase()))
@@ -18,10 +18,10 @@ function BlogPage() {
         <div className="wrap">
           <div className="eyebrow">The Field Journal</div>
           <h1 className="h-display" style={{ fontSize: 'clamp(40px, 6vw, 76px)', margin: '14px 0 12px' }}>
-            Honest writing on <span className="h-italic">dog care.</span>
+            Thoughtful writing on <span className="h-italic">honoring dogs.</span>
           </h1>
           <p className="lede" style={{ margin: 0 }}>
-            Grooming tips, ingredient deep-dives, and notes from the field. Vet-reviewed, no fluff.
+            Stories of dogs remembered, guidance on grief and keepsakes, and notes from inside the studio.
           </p>
         </div>
       </section>

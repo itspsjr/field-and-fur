@@ -275,9 +275,9 @@ function SectionHeader({ eyebrow, title, lede, align = 'left', action }) {
 // ─── Trust strip ───────────────────────────────────────────────────────
 function TrustStrip() {
   const items = [
-    { t: 'No Harsh Chemicals', d: 'Free from parabens, sulfates, alcohol, and synthetic fragrance.' },
-    { t: 'Vet-Friendly Formula', d: 'Developed alongside veterinarians and groomers.' },
-    { t: 'Safe For All Breeds', d: 'Gentle enough for puppies and sensitive senior skin.' },
+    { t: 'Made to Order', d: 'Every keepsake is built from your photos, your dog’s name, and your story.' },
+    { t: 'Designer-Crafted', d: 'A real designer works on every piece. No templates, no generators.' },
+    { t: 'Proof in 24 Hours', d: 'Your first digital proof arrives within 24 hours of placing your order.' },
   ];
   return (
     <section className="section-tight" style={{ background: 'var(--bg-sage)' }}>
