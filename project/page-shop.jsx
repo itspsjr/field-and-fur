@@ -30,7 +30,7 @@ function ShopPage() {
       {/* PAGE HEADER */}
       <section style={{ background: 'var(--bg-cream)', padding: '64px 0 48px' }}>
         <div className="wrap">
-          <div className="eyebrow">pawapothecary shop · {filtered.length} {filtered.length === 1 ? 'product' : 'products'}</div>
+          <div className="eyebrow">PawApothecary shop · {filtered.length} {filtered.length === 1 ? 'product' : 'products'}</div>
           <h1 className="h-display" style={{ fontSize: 'clamp(40px, 6vw, 72px)', margin: '12px 0 8px' }}>
             Shop by collection, not by bundle.
           </h1>
