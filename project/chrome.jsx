@@ -104,7 +104,7 @@ function SearchOverlay({ open, onClose }) {
       }}>
         <div className="wrap" style={{ padding: '24px 0 32px' }}>
           <div className="row" style={{ justifyContent: 'space-between', marginBottom: 20 }}>
-            <div className="eyebrow">Search Paw Apothecary</div>
+            <div className="eyebrow">Search pawapothecary</div>
             <button className="btn btn-ghost btn-sm" onClick={onClose}>Close <span className="kbd" style={{ marginLeft: 6 }}>esc</span></button>
           </div>
           <div style={{ position: 'relative' }}>
