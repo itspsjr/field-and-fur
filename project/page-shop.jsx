@@ -1,137 +1,68 @@
-// Shop page with real filtering + sorting
+// Shop page — redirects to Legacy Studio keepsakes
 
 function ShopPage() {
   const { navigate, addToCart, openMiniCart } = React.useContext(AppCtx);
-  const [filters, setFilters] = React.useState({ category: 'all', size: 'all', skin: 'all' });
-  const [sort, setSort] = React.useState('bestselling');
   const [quickShop, setQuickShop] = React.useState(null);
-
-  const filtered = React.useMemo(() => {
-    const all = PRODUCTS.concat(UPSELLS);
-    let list = all.filter(p =>
-      (filters.category === 'all' || p.category.toLowerCase() === filters.category) &&
-      (filters.size === 'all' || p.size === filters.size || p.size === 'all') &&
-      (filters.skin === 'all' || p.skin === filters.skin || p.skin === 'all')
-    );
-    if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price);
-    if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price);
-    if (sort === 'newest') list = [...list].sort((a, b) => (b.newest ? 1 : 0) - (a.newest ? 1 : 0));
-    if (sort === 'bestselling') list = [...list].sort((a, b) => b.reviews - a.reviews);
-    return list;
-  }, [filters, sort]);
-
-  const totalProducts = PRODUCTS.length + UPSELLS.length;
-  const CATEGORIES = ['all', 'shop'];
-  const SIZES = [['all', 'All sizes'], ['small', 'Small / Puppy'], ['large', 'Medium & Large']];
-  const SKIN = [['all', 'All skin'], ['sensitive', 'Sensitive'], ['normal', 'Normal']];
 
   return (
     <main className="page-fade">
       {/* PAGE HEADER */}
       <section style={{ background: 'var(--bg-cream)', padding: '64px 0 48px' }}>
         <div className="wrap">
-          <div className="eyebrow">PawApothecary shop · {filtered.length} {filtered.length === 1 ? 'product' : 'products'}</div>
+          <div className="eyebrow">PawApothecary · Legacy Studio</div>
           <h1 className="h-display" style={{ fontSize: 'clamp(40px, 6vw, 72px)', margin: '12px 0 8px' }}>
-            Shop by collection, not by bundle.
+            Keepsakes for the dog you'll never forget.
           </h1>
           <p className="lede" style={{ margin: 0 }}>
-            Dog wipes, dental water, and Legacy Studio each serve a different moment. Browse everyday grooming products here, then visit Legacy Studio only when remembrance is what you need.
+            Each piece is made to order, personalized with your dog's name, photos, and memories. Browse all Legacy Studio services below.
           </p>
         </div>
       </section>
 
-      {/* SHOP GRID + FILTERS */}
+      {/* LEGACY SERVICES GRID */}
       <section className="section">
-        <div className="wrap" style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: 56, alignItems: 'flex-start' }}>
-          {/* FILTERS */}
-          <aside style={{ position: 'sticky', top: 92 }}>
-            <FilterGroup
-              title="Category"
-              options={CATEGORIES.map(c => [c, c[0].toUpperCase() + c.slice(1)])}
-              value={filters.category}
-              onChange={v => setFilters({ ...filters, category: v })}
-            />
-            <FilterGroup
-              title="Dog size"
-              options={SIZES}
-              value={filters.size}
-              onChange={v => setFilters({ ...filters, size: v })}
-            />
-            <FilterGroup
-              title="Skin type"
-              options={SKIN}
-              value={filters.skin}
-              onChange={v => setFilters({ ...filters, skin: v })}
-            />
-            <button
-              className="btn btn-ghost btn-sm"
-              style={{ marginTop: 8, paddingInline: 4 }}
-              onClick={() => setFilters({ category: 'all', size: 'all', skin: 'all' })}
-            >
-              ↺ Reset filters
-            </button>
-          </aside>
-
-          {/* PRODUCTS */}
-          <div>
-            <div className="row" style={{ justifyContent: 'space-between', marginBottom: 24, gap: 12, flexWrap: 'wrap' }}>
-              <div className="small">{filtered.length} of {totalProducts} Shop products</div>
-              <div className="row" style={{ gap: 10 }}>
-                <label className="small mono" htmlFor="sort">SORT BY</label>
-                <select id="sort" className="select" style={{ width: 180, height: 38 }} value={sort} onChange={e => setSort(e.target.value)}>
-                  <option value="bestselling">Bestselling</option>
-                  <option value="newest">Newest</option>
-                  <option value="price-asc">Price: Low to high</option>
-                  <option value="price-desc">Price: High to low</option>
-                </select>
-              </div>
-            </div>
-            {filtered.length === 0 ? (
-              <div className="card" style={{ padding: 48, textAlign: 'center' }}>
-                <p className="h-display" style={{ fontSize: 24, margin: 0 }}>No products match.</p>
-                <p className="muted" style={{ marginTop: 8 }}>Try resetting your filters.</p>
-              </div>
-            ) : (
-              <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-                {filtered.map(p => (
-                  <ProductCard key={p.id} product={p} onClick={() => setQuickShop({ type: 'product', item: p })} />
-                ))}
-              </div>
-            )}
-
-            <div className="legacy-shop-block">
-              <div className="row" style={{ justifyContent: 'space-between', gap: 18, flexWrap: 'wrap', marginBottom: 22 }}>
-                <div>
-                  <div className="eyebrow" style={{ marginBottom: 8 }}>Dog Legacy Studio</div>
-                  <h2 className="h-display" style={{ fontSize: 'clamp(28px, 4vw, 44px)', margin: 0 }}>For the dog whose story continues after goodbye.</h2>
-                </div>
-                <button className="btn btn-ghost" onClick={() => navigate('legacy')}>View all services →</button>
-              </div>
-              <div className="legacy-shop-grid">
-                {LEGACY_SERVICES.slice(0, 3).map(service => {
-                  const option = service.options[0];
-                  return (
-                    <article key={service.id} className="card" style={{ padding: 18 }}>
-                      <Placeholder label={service.image} tone={service.tone} aspect="4 / 3" style={{ marginBottom: 16 }} />
-                      <div className="row" style={{ justifyContent: 'space-between', gap: 14 }}>
-                        <h3 className="h-display" style={{ fontSize: 22, margin: 0 }}>{service.name}</h3>
-                        <strong>${option.price}</strong>
-                      </div>
-                      <p className="small" style={{ color: 'var(--ink-2)', lineHeight: 1.55 }}>{option.name} · {option.note}</p>
-                      <button
-                        className="btn btn-primary btn-sm"
-                        onClick={() => setQuickShop({ type: 'legacy', item: service })}
-                      >
-                        Personalize keepsake
-                      </button>
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
+        <div className="wrap">
+          <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+            {LEGACY_SERVICES.map(service => {
+              const option = service.options[0];
+              return (
+                <article key={service.id} className="card" style={{ padding: 18 }}>
+                  <Placeholder label={service.image} tone={service.tone} aspect="4 / 3" style={{ marginBottom: 16 }} />
+                  <div className="row" style={{ justifyContent: 'space-between', gap: 14 }}>
+                    <h3 className="h-display" style={{ fontSize: 22, margin: 0 }}>{service.name}</h3>
+                    <strong>From ${option.price}</strong>
+                  </div>
+                  <p className="small" style={{ color: 'var(--ink-2)', lineHeight: 1.55 }}>{option.name} · {option.note}</p>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    onClick={() => setQuickShop({ type: 'legacy', item: service })}
+                  >
+                    Personalize keepsake
+                  </button>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* CTA BLOCK */}
+      <section className="section" style={{ background: 'var(--bg-sage)' }}>
+        <div className="wrap" style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+          <div className="eyebrow" style={{ marginBottom: 12 }}>Not sure where to start?</div>
+          <h2 className="h-display" style={{ fontSize: 'clamp(28px, 4vw, 44px)', margin: '0 0 16px' }}>
+            We'll help you find the right keepsake.
+          </h2>
+          <p className="lede" style={{ margin: '0 auto 24px' }}>
+            Every family's story is different. Reach out and we'll guide you to the keepsake that fits yours.
+          </p>
+          <div className="row" style={{ justifyContent: 'center', gap: 14, flexWrap: 'wrap' }}>
+            <button className="btn btn-primary btn-lg" onClick={() => navigate('legacy')}>View all services</button>
+            <button className="btn btn-outline btn-lg" onClick={() => navigate('contact')}>Contact us</button>
+          </div>
+        </div>
+      </section>
+
       <ShopQuickCustomizeDrawer
         selection={quickShop}
         onClose={() => setQuickShop(null)}
@@ -238,50 +169,16 @@ function ShopQuickCustomizeDrawer({ selection, onClose, onAdded }) {
                 ))}
               </div>
             </div>
-          ) : (
-            <React.Fragment>
-              <div className="shop-config-section">
-                <label className="label">Purchase option</label>
-                <div className="quick-option-grid two">
-                  <button className={!subscribe ? 'active' : ''} onClick={() => setSubscribe(false)}>
-                    <strong>One-time</strong>
-                    <span>Ships once</span>
-                    <em>${item.price.toFixed(2)}</em>
-                  </button>
-                  <button className={subscribe ? 'active' : ''} onClick={() => setSubscribe(true)}>
-                    <strong>Subscribe</strong>
-                    <span>Save 15%</span>
-                    <em>${item.subPrice.toFixed(2)}</em>
-                  </button>
-                </div>
-              </div>
-              {subscribe && (
-                <div className="shop-config-section">
-                  <label className="label">Delivery frequency</label>
-                  <div className="quick-segments">
-                    {[4, 6, 8].map(w => <button key={w} className={frequency === w ? 'active' : ''} onClick={() => setFrequency(w)}>{w} weeks</button>)}
-                  </div>
-                </div>
-              )}
-              <div className="shop-config-section">
-                <label className="label">Quantity</label>
-                <div className="quick-qty">
-                  <button onClick={() => setQty(Math.max(1, qty - 1))}>-</button>
-                  <span className="mono">{qty}</span>
-                  <button onClick={() => setQty(qty + 1)}>+</button>
-                </div>
-              </div>
-            </React.Fragment>
-          )}
+          ) : null}
 
           <div className="shop-config-section">
             <label className="label">{isLegacy ? 'Story notes' : 'Use case or notes'}</label>
-            <textarea className="textarea" rows="4" value={notes} onChange={e => setNotes(e.target.value)} placeholder={isLegacy ? 'Favorite routines, dates, phrases, or memories...' : 'Sensitive skin, muddy walks, breath care schedule...'} />
+            <textarea className="textarea" rows="4" value={notes} onChange={e => setNotes(e.target.value)} placeholder={isLegacy ? 'Favorite routines, dates, phrases, or memories...' : 'Notes...'} />
           </div>
         </div>
         <div className="shop-drawer-foot">
           <div>
-            <div className="small">{isLegacy ? `Personalized for ${dogLabel}` : subscribe ? `Ships every ${frequency} weeks` : 'One-time purchase'}</div>
+            <div className="small">{isLegacy ? `Personalized for ${dogLabel}` : 'One-time purchase'}</div>
             <strong>${(unitPrice * (isLegacy ? 1 : qty)).toFixed(2)}</strong>
           </div>
           <button className="btn btn-primary btn-lg" onClick={addConfigured}>Add to bag</button>

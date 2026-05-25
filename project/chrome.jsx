@@ -82,7 +82,7 @@ function SearchOverlay({ open, onClose }) {
     ? all.filter(x => x.kind === 'product').slice(0, 4)
     : all.filter(x => (x.name || x.title || '').toLowerCase().includes(q.toLowerCase())).slice(0, 8);
 
-  const popular = ['Grooming Wipes', 'Subscribe & save', 'Puppy', 'Paw care', 'Dental water'];
+  const popular = ['Memorial Book', 'Tribute Wall Art', 'Letter From Your Dog', 'Dog Tribute Page', 'Keepsakes'];
 
   return (
     <React.Fragment>
@@ -113,7 +113,7 @@ function SearchOverlay({ open, onClose }) {
               ref={inputRef}
               value={q}
               onChange={e => setQ(e.target.value)}
-              placeholder="Try “puppy”, “dental”, or “paw care”…"
+              placeholder=”Try “memorial book”, “tribute art”, or “letter”…”
               style={{
                 width: '100%', padding: '20px 20px 20px 52px',
                 fontSize: 22, fontFamily: 'var(--serif)',

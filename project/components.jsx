@@ -72,9 +72,9 @@ function AnnouncementBar() {
   return (
     <div className="announce">
       <div className="wrap" style={{ display: 'flex', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
-        <span>Free shipping on orders over $35</span>
+        <span>Free shipping on all Legacy Studio orders</span>
         <span style={{ opacity: 0.5 }}>·</span>
-        <span>Subscribe &amp; save 15%</span>
+        <span>Digital proofs within 24 hours</span>
       </div>
     </div>
   );
@@ -86,10 +86,9 @@ function Header() {
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);
   const links = [
     { id: 'home', label: 'Home' },
-    { id: 'shop', label: 'Shop' },
-    { id: 'about', label: 'Our Story' },
     { id: 'legacy', label: 'Legacy Studio' },
-    { id: 'subscribe', label: 'Subscribe & Save' },
+    { id: 'about', label: 'Our Story' },
+    { id: 'contact', label: 'Contact' },
   ];
   return (
     <header className="header">
@@ -145,7 +144,7 @@ function Footer() {
           <div>
             <Logo light />
             <p style={{ color: '#8d8b7a', marginTop: 16, maxWidth: 260, fontSize: 14, lineHeight: 1.55 }}>
-              Dog grooming essentials and Legacy Studio memorial keepsakes.
+              A memorial studio for families honoring a dog's life and story.
             </p>
             <div className="row" style={{ marginTop: 20, gap: 12 }}>
               {Object.entries(socialLinks).map(([s, href]) => (
@@ -164,28 +163,24 @@ function Footer() {
             </div>
           </div>
           <div>
-            <h4>Shop</h4>
-            <a onClick={() => navigate('shop')}>Dog Care System</a>
-            <a onClick={() => navigate('product')}>Dog Wipes</a>
-            <a onClick={() => navigate('shop')}>Dental Water Additive</a>
-            <a onClick={() => navigate('shop')}>Paw Wipes</a>
-            <a onClick={() => navigate('legacy')}>Dog Legacy Studio</a>
-            <a onClick={() => navigate('subscribe')}>Subscribe &amp; Save</a>
+            <h4>Legacy Studio</h4>
+            <a onClick={() => navigate('legacy')}>All Keepsakes</a>
+            <a onClick={() => navigate('legacy')}>Dog Memorial Book</a>
+            <a onClick={() => navigate('legacy')}>Tribute Wall Art</a>
+            <a onClick={() => navigate('legacy')}>A Letter From Your Dog</a>
+            <a onClick={() => navigate('legacy')}>Dog Tribute Page</a>
           </div>
           <div>
             <h4>Support</h4>
             <a onClick={() => navigate('contact')}>Contact Us</a>
             <a onClick={() => navigate('about')}>Our Story</a>
-            <a onClick={() => navigate('legacy')}>Dog Legacy Studio</a>
-            <a>Shipping</a>
-            <a>Returns</a>
             <a>FAQ</a>
             <a>Wholesale</a>
           </div>
           <div>
             <h4>Join the Pack</h4>
             <p style={{ color: '#8d8b7a', fontSize: 14, lineHeight: 1.55, marginTop: 0 }}>
-              10% off your first order, plus dog-grooming notes, dog-care drops, and occasional studio updates. Unsubscribe anytime.
+              Studio updates, stories of dogs remembered, and occasional keepsake drops. Unsubscribe anytime.
             </p>
             <form onSubmit={e => { e.preventDefault(); if (email.includes('@')) setSubscribed(true); }} style={{ marginTop: 14, display: 'flex', gap: 8 }}>
               <input
@@ -310,15 +305,9 @@ function CheckLeaf() {
 }
 
 // ─── Catalogue data ────────────────────────────────────────────────────
-const UPSELLS = [
-];
+const UPSELLS = [];
 
-const PRODUCTS = [
-  { id: 'wipes-hero', name: 'Natural Dog Grooming Wipes', tagline: 'The everyday wipe.', price: 12.00, subPrice: 10.20, category: 'Shop', size: 'all', skin: 'all', rating: 4.9, reviews: 2412, image: 'hero wipes canister', tone: 'sage', badge: 'Bestseller', bestseller: true, newest: false },
-  { id: 'dental-water', name: 'Dental Water Additive', tagline: 'A capful a day. Fresher breath in a week.', price: 14.00, subPrice: 11.90, category: 'Shop', size: 'all', skin: 'all', rating: 4.8, reviews: 612, image: 'dental water bottle · 16oz', tone: 'sage', badge: 'Customer favorite', newest: true, short: 'Adds to drinking water. Tasteless, vet-formulated, fights plaque.' },
-  { id: 'paw-wipes', name: 'Paw &amp; Pad Wipes', tagline: 'Trail-tested. Mud-approved.', price: 11.00, subPrice: 9.35, category: 'Shop', size: 'all', skin: 'all', rating: 4.8, reviews: 1043, image: 'paw wipes pack', tone: 'cream', newest: false },
-  { id: 'travel', name: 'Travel Pouch — 12 ct', tagline: 'Walks, parks, glove box.', price: 6.50, subPrice: 5.53, category: 'Shop', size: 'all', skin: 'all', rating: 4.8, reviews: 271, image: 'travel pouch', tone: 'cream', newest: true },
-];
+const PRODUCTS = [];
 
 // ─── Shared global state (cart, route) ────────────────────────────────
 const AppCtx = React.createContext(null);
