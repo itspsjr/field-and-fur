@@ -31,7 +31,7 @@ function Logo({ size = 22, light = false }) {
   return (
     <div className="logo" style={{ color: light ? '#fff' : 'var(--ink)', fontSize: size }}>
       <PawMark size={size + 4} color={light ? '#fff' : 'var(--forest)'} accent="var(--gold)" />
-      <span>PawApothecary</span>
+      <span>Ever After Paw</span>
     </div>
   );
 }
@@ -201,7 +201,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 PawApothecary. All rights reserved. For external use on animals only. Results may vary.</span>
+          <span>© 2026 Ever After Paw. All rights reserved. For external use on animals only. Results may vary.</span>
           <div className="links">
             <a>Privacy Policy</a>
             <a>Terms</a>

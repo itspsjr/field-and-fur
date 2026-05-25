@@ -106,7 +106,7 @@ function HomePage() {
       <section className="section-tight">
         <div className="wrap">
           <SectionHeader
-            eyebrow="@pawapothecary"
+            eyebrow="@everafterpaw"
             title="Stories we’ve been trusted with"
             action={<a className="btn btn-ghost">Follow on Instagram →</a>}
           />
@@ -202,7 +202,7 @@ function Hero({ layout = 'split' }) {
     <section style={{ background: 'var(--bg-cream)', position: 'relative', overflow: 'hidden' }}>
       <div className="wrap grid-split" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 56, alignItems: 'center', minHeight: 'min(720px, 80vh)', padding: '64px 0' }}>
         <div>
-          <span className="pill">PawApothecary · Est. 2024</span>
+          <span className="pill">Ever After Paw · Est. 2024</span>
           <h1 className="h-display" style={{ fontSize: 'clamp(48px, 7.5vw, 92px)', margin: '22px 0 18px' }}>
             For the dog whose<br />
             <span className="h-italic" style={{ color: 'var(--forest)' }}>story continues.</span>

@@ -72,7 +72,7 @@ function ProductPage() {
               <span className="pill">{product.category}</span>
               {product.badge && <span className="pill gold">{product.badge}</span>}
             </div>
-            <h1 className="h-display" style={{ fontSize: 'clamp(32px, 4.5vw, 52px)', margin: '12px 0 8px' }} dangerouslySetInnerHTML={{ __html: 'PawApothecary ' + product.name }} />
+            <h1 className="h-display" style={{ fontSize: 'clamp(32px, 4.5vw, 52px)', margin: '12px 0 8px' }} dangerouslySetInnerHTML={{ __html: 'Ever After Paw ' + product.name }} />
             <div className="row" style={{ gap: 14, marginBottom: 18 }}>
               <Stars value={product.rating} showNumber count={product.reviews} />
             </div>

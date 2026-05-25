@@ -9,7 +9,7 @@ function ShopPage() {
       {/* PAGE HEADER */}
       <section style={{ background: 'var(--bg-cream)', padding: '64px 0 48px' }}>
         <div className="wrap">
-          <div className="eyebrow">PawApothecary · Legacy Studio</div>
+          <div className="eyebrow">Ever After Paw · Legacy Studio</div>
           <h1 className="h-display" style={{ fontSize: 'clamp(40px, 6vw, 72px)', margin: '12px 0 8px' }}>
             Keepsakes for the dog you'll never forget.
           </h1>
