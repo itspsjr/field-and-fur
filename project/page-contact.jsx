@@ -92,7 +92,7 @@ function ContactPage() {
             <div className="card-cream" style={{ padding: 24, borderRadius: 14 }}>
               <div className="eyebrow">Mailing address</div>
               <p style={{ margin: '8px 0 0', fontSize: 14, lineHeight: 1.6 }}>
-                pawapothecary<br />
+                PawApothecary<br />
                 PO Box 142<br />
                 Rhinebeck, NY 12572
               </p>
