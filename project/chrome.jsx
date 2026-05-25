@@ -261,7 +261,7 @@ function MiniCartDrawer({ open, onClose }) {
             <Placeholder label="empty bag" tone="sage" aspect="1 / 1" style={{ maxWidth: 140, margin: '0 auto 16px' }} />
             <p className="h-display" style={{ fontSize: 22, margin: '0 0 8px' }}>Your bag is empty.</p>
             <p className="muted small" style={{ marginBottom: 16 }}>A memorial book? A tribute print?</p>
-            <button className="btn btn-primary" onClick={() => { onClose(); navigate('shop'); }}>Browse the line</button>
+            <button className="btn btn-primary" onClick={() => { onClose(); navigate('legacy'); }}>Explore keepsakes</button>
           </div>
         ) : (
           <div style={{ display: 'grid', gap: 14 }}>

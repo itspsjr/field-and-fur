@@ -4,12 +4,6 @@ function ProductPage() {
   const { navigate, params, addToCart } = React.useContext(AppCtx);
   const product = (PRODUCTS.concat(UPSELLS)).find(p => p.id === params.id);
 
-  React.useEffect(() => {
-    if (!product) navigate('legacy');
-  }, [product]);
-
-  if (!product) return null;
-
   const [subscribe, setSubscribe] = React.useState(true);
   const [qty, setQty] = React.useState(1);
   const [tab, setTab] = React.useState('ingredients');
@@ -19,10 +13,17 @@ function ProductPage() {
   const buyRef = React.useRef(null);
 
   React.useEffect(() => {
+    if (!product) navigate('legacy');
+  }, [product]);
+
+  React.useEffect(() => {
+    if (!product) return;
     const obs = new IntersectionObserver(([e]) => setStickyVisible(!e.isIntersecting), { rootMargin: '-120px 0px 0px 0px' });
     if (buyRef.current) obs.observe(buyRef.current);
     return () => obs.disconnect();
-  }, [product.id]);
+  }, [product && product.id]);
+
+  if (!product) return null;
 
   const unitPrice = subscribe ? product.subPrice : product.price;
   const images = [
