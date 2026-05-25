@@ -14,9 +14,9 @@ function HomePage() {
       <section className="section" style={{ background: '#fff' }}>
         <div className="wrap">
           <SectionHeader
-            eyebrow="Field & Fur collections"
+            eyebrow="Paw Apothecary collections"
             title="Dog grooming and dog memorials. Different needs, same standard."
-            lede="Field & Fur is focused on dogs: everyday grooming with wipes and dental water, plus Legacy Studio memorial services when a dog’s life needs to be honored."
+            lede="Paw Apothecary is focused on dogs: everyday grooming with wipes and dental water, plus Legacy Studio memorial services when a dog’s life needs to be honored."
             align="center"
           />
           <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
@@ -46,7 +46,7 @@ function HomePage() {
               Daily dog grooming. Dog memorials when the time comes.
             </h2>
             <p className="lede" style={{ marginTop: 18 }}>
-              Field &amp; Fur does not treat memorial work like an everyday refill. Dog wipes and dental water live in daily grooming; Legacy Studio stays separate for remembrance.
+              Paw Apothecary does not treat memorial work like an everyday refill. Dog wipes and dental water live in daily grooming; Legacy Studio stays separate for remembrance.
             </p>
             <div className="row" style={{ marginTop: 28, gap: 14, flexWrap: 'wrap' }}>
               <button className="btn btn-primary btn-lg" onClick={() => navigate('shop')}>Shop dog care</button>
@@ -124,7 +124,7 @@ function HomePage() {
           <SectionHeader
             eyebrow="The line"
             title="Shop by collection"
-            lede="Choose everyday dog grooming or Legacy Studio based on what you need today. They share the Field & Fur standard, but they do not have to be bought together."
+            lede="Choose everyday dog grooming or Legacy Studio based on what you need today. They share the Paw Apothecary standard, but they do not have to be bought together."
             action={<button className="btn btn-ghost" onClick={() => navigate('shop')}>Shop all →</button>}
           />
           <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
@@ -284,13 +284,13 @@ function Hero({ layout = 'split' }) {
     <section style={{ background: 'var(--bg-cream)', position: 'relative', overflow: 'hidden' }}>
       <div className="wrap grid-split" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 56, alignItems: 'center', minHeight: 'min(720px, 80vh)', padding: '64px 0' }}>
         <div>
-          <span className="pill">Field &amp; Fur Co. · Est. 2024</span>
+          <span className="pill">Paw Apothecary · Est. 2024</span>
           <h1 className="h-display" style={{ fontSize: 'clamp(48px, 7.5vw, 92px)', margin: '22px 0 18px' }}>
             Clean ingredients.<br />
             <span className="h-italic" style={{ color: 'var(--forest)' }}>Happy dogs.</span>
           </h1>
           <p className="lede" style={{ fontSize: 19, maxWidth: 520 }}>
-            Field &amp; Fur is built around dog grooming and dog memorials: wipes and dental water for everyday care, and Legacy Studio for honoring a dog after loss.
+            Paw Apothecary is built around dog grooming and dog memorials: wipes and dental water for everyday care, and Legacy Studio for honoring a dog after loss.
           </p>
           <div className="row" style={{ marginTop: 32, gap: 14, flexWrap: 'wrap' }}>
             <button className="btn btn-primary btn-lg" onClick={() => navigate('shop')}>Shop wipes</button>
